@@ -1,0 +1,34 @@
+{
+  "name": "blockchain-app",
+  "version": "1.0.0",
+  "description": "This is a digital, decentralized, distributed ledger system.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sengartech/blockchain-app.git"
+  },
+  "keywords": [
+    "blockchain",
+    "ledger",
+    "system."
+  ],
+  "author": "Rishabh Singh Sengar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sengartech/blockchain-app/issues"
+  },
+  "homepage": "https://github.com/sengartech/blockchain-app#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.3",
+    "crypto-js": "^3.1.9-1",
+    "express": "^4.16.3",
+    "helmet": "^3.13.0",
+    "morgan": "^1.9.1",
+    "uuid": "^3.3.2"
+  }
+}
