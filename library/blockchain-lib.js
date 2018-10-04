@@ -25,9 +25,9 @@ let Blockchain = () => {
   this.networkNodeList = []
 
   // creating the genesis block.
-
-  // let currentHash = 
-  // this.createBlock(1, '0', )
+  let nonce = this.proofOfWork('0000', this.pendingTxData)
+  let currentHash = this.createHash(nonce, '0000', this.pendingTxData)
+  this.createBlock(nonce, '0000', currentHash)
 
 } // end of the blockchain constructor.
 
@@ -129,3 +129,16 @@ Blockchain.prototype.addNewTxDataToPendingTxData = (amount, comment, sender, rec
   return(lastBlock['index'] + 1)
 } // end of the addNewTxDataToPendingTxData function.
 
+/**
+ * function to get block using hash.
+ * params: hash.
+ */
+Blockchain.prototype.getBlockUsingHash = (hash) => {
+  let blockList = this.chain.slice()
+
+  let block = blockList.filter((blockObject) => {
+    if (blockObject.currentHash === hash) return blockObject
+  })
+
+  return block
+} // end of the getBlockUsingHash function.
