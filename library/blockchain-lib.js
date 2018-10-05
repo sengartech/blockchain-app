@@ -12,7 +12,7 @@ const uuid = require('uuid')
 /**
  * constructor function for blockchain.
  */
-let Blockchain = () => {
+let Blockchain = function() {
 
   // chain - block - index,createdOn,txData,nonce,previousHash,currentHash
   this.chain = []
@@ -35,7 +35,7 @@ let Blockchain = () => {
  * function to create a block.
  * params: nonce, previousHash, currentHash.
  */
-Blockchain.prototype.createBlock = (nonce, previousHash, currentHash) => {
+Blockchain.prototype.createBlock = function(nonce, previousHash, currentHash) {
   let blockObject = {
     index: this.chain.length + 1,
     createdOn: Date.now(),
@@ -56,7 +56,7 @@ Blockchain.prototype.createBlock = (nonce, previousHash, currentHash) => {
  * function to get last block.
  * params:
  */
-Blockchain.prototype.getLastBlock = () => {
+Blockchain.prototype.getLastBlock = function() {
   let chainLength = this.chain.length
   
   let lastBlock = this.chain[chainLength - 1]
@@ -68,7 +68,7 @@ Blockchain.prototype.getLastBlock = () => {
  * function to create hash.
  * params: nonce, previousHash, txData.
  */
-Blockchain.prototype.createHash = (nonce, previousHash, txData) => {
+Blockchain.prototype.createHash = function(nonce, previousHash, txData) {
   let infoString = nonce.toString() + previousHash + JSON.stringify(txData)
 
   let currentHash = cryptoJs.SHA256(infoString).toString()
@@ -81,7 +81,7 @@ Blockchain.prototype.createHash = (nonce, previousHash, txData) => {
  * finding the nonce value.
  * params: previousHash, txData.
  */
-Blockchain.prototype.proofOfWork = (previousHash, txData) => {
+Blockchain.prototype.proofOfWork = function(previousHash, txData) {
   let nonce = 1
   let targetZeroes = '0000'
 
@@ -102,7 +102,7 @@ Blockchain.prototype.proofOfWork = (previousHash, txData) => {
  * function to create transaction data.
  * params: amount, comment, sender, receiver.
  */
-Blockchain.prototype.createTxData = (amount, comment, sender, receiver) => {
+Blockchain.prototype.createTxData = function(amount, comment, sender, receiver) {
   let txObject = {
     txId: uuid.v1().split('-').join(''),
     createdOn: Date.now(),
@@ -119,7 +119,7 @@ Blockchain.prototype.createTxData = (amount, comment, sender, receiver) => {
  * function to add txData to pendingTxData.
  * params: amount, comment, sender, receiver.
  */
-Blockchain.prototype.addNewTxDataToPendingTxData = (amount, comment, sender, receiver) => {
+Blockchain.prototype.addNewTxDataToPendingTxData = function(amount, comment, sender, receiver) {
   let txObject = this.createTxData(amount, comment, sender, receiver)
 
   this.pendingTxData.push(txObject)
@@ -133,7 +133,7 @@ Blockchain.prototype.addNewTxDataToPendingTxData = (amount, comment, sender, rec
  * function to get block using hash.
  * params: hash.
  */
-Blockchain.prototype.getBlockUsingHash = (hash) => {
+Blockchain.prototype.getBlockUsingHash = function(hash) {
   let blockList = this.chain.slice()
 
   let block = blockList.filter((blockObject) => {
@@ -142,3 +142,5 @@ Blockchain.prototype.getBlockUsingHash = (hash) => {
 
   return block
 } // end of the getBlockUsingHash function.
+
+module.exports = Blockchain

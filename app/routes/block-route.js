@@ -13,6 +13,12 @@ let router = (app) => {
   // params:
   app.get(`${path}/check`, blockController.check)
 
+  // params:
+  app.get(`${path}/get/full`, blockController.getBlockchainLedger)
+
+  // params:
+  app.get(`${path}/list`, blockController.getBlockList)
+
 } // end of the router function.
 
 /**
