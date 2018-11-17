@@ -65,7 +65,7 @@ app.listen(config.port)
     console.log(`error on port listening: ${err}`)
   })
   .on('listening', () => {
-    console.log(`${config.name} app is listening at port: ${config.port}`)
+    console.log(`${config.name} is listening at port: ${config.port}`)
   })
 
 /**

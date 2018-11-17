@@ -107,7 +107,7 @@ Blockchain.prototype.createTxData = function(amount, comment, sender, receiver) 
     txId: uuid.v1().split('-').join(''),
     createdOn: Date.now(),
     amount: amount,
-    comment: comment,
+    comment: comment || '',
     sender: sender,
     receiver: receiver
   }

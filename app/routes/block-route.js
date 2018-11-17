@@ -19,6 +19,10 @@ let router = (app) => {
   // params:
   app.get(`${path}/list`, blockController.getBlockList)
 
+  // params: amount, sender, receiver.
+  // optional params: comment.
+  app.get(`${path}/new/transaction`, blockController.newTransaction)
+
 } // end of the router function.
 
 /**
